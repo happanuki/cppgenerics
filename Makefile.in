@@ -1,0 +1,145 @@
+SHELL = @build_shell@
+
+CXX ?= @build_cxx@
+TEST_CXX ?= @test_cxx@
+
+ROOT_DIR = @srcdir@
+DEBUG=@debug@
+
+VERSION= @PACKAGE_VERSION@
+
+LIB_NAME=CppGenerics
+LIB_FNAME=lib$(LIB_NAME)-$(VERSION).so
+
+OUT_DIR = $(ROOT_DIR)/out
+OBJ_DIR = $(ROOT_DIR)/obj
+
+TEST_LIB_NAME=$(LIB_NAME)Test
+TEST_LIB_FNAME=lib$(TEST_LIB_NAME).so
+
+PREFIX ?= @prefix@
+
+SRC_DIR=$(ROOT_DIR)/src
+TEST_SRC_DIR=$(ROOT_DIR)/src.test
+
+
+##################################
+
+TARGETS = all default build test install clean prepare link link-test run-test distclean prepare-test
+
+gitGTEST_URL=https://github.com/google/googletest.git
+gitGTEST_DIR=googletest
+
+GTEST_DIR = $(gitGTEST_DIR)/googletest
+GMOCK_DIR = $(gitGTEST_DIR)/googlemock
+GTESTA=$(GTEST_DIR)/make/gtest_main.a
+
+
+ifeq ($(DEBUG),1)
+	CXX_FLAGS = -g -O0 -DDEBUG=1 
+else
+	CXX_FLAGS = -O2 
+endif
+
+CXX_FLAGS += -c -std=c++11 -pthread -I$(ROOT_DIR)/include -I$(ROOT_DIR)/include/interfaces
+CXX_FLAGS_TEST = -isystem $(GTEST_DIR)/include -isystem $(GMOCK_DIR)/include $(CXX_FLAGS) -I$(ROOT_DIR)/include/include.test -I$(GTEST_DIR)/include -I$(GMOCK_DIR)/include
+
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+SRCS_TEST = $(wildcard $(TEST_SRC_DIR)/*.cpp)
+
+HDRS = $(wildcard $(ROOT_DIR)/include/interfaces/*.h)
+HDRS+= $(wildcard $(ROOT_DIR)/include/*.h)
+HDRS_TEST = $(HDRS) $(wildcard $(ROOT_DIR)/include/include.test/*.h) 
+
+_TEST_LIB_P=testlib
+_LIB_P=lib
+_TEST_P=test
+
+_TEST_LIB_P=testlib
+_LIB_P=lib
+_TEST_P=test
+
+_OBJS = $(subst .cpp,_$(_LIB_P).o,$(SRCS))
+OBJS = $(subst $(SRC_DIR),$(OBJ_DIR),$(_OBJS))
+
+_OBJS_TEST = $(subst .cpp,_$(_TEST_P).o,$(SRCS_TEST))
+OBJS_TEST = $(subst $(TEST_SRC_DIR),$(OBJ_DIR),$(_OBJS_TEST))
+
+_OBJS_TEST_LIB = $(subst .cpp,_$(_TEST_LIB_P).o,$(SRCS))
+OBJS_TEST_LIB = $(subst $(SRC_DIR),$(OBJ_DIR),$(_OBJS_TEST_LIB))
+
+LD_FLAGS=-Wl,-lpthread 
+LD_FLAGS_TEST=-Wl,-lpthread -L$(OUT_DIR) -l$(TEST_LIB_NAME)
+
+
+.PHONY:	$(TARGETS)
+
+
+default: prepare build test
+
+
+all: prepare build test install
+
+
+build: prepare link
+
+
+prepare: 
+	mkdir -p $(OUT_DIR) && \
+	mkdir -p $(OBJ_DIR)
+
+prepare-test: 
+	[[ ! -d $(gitGTEST_DIR) ]] && { \
+		git clone $(gitGTEST_URL) $(gitGTEST_DIR) && \
+		CXX=$(TEST_CXX) make -C $(GMOCK_DIR)/make &&  \
+		CXX=$(TEST_CXX) make -C $(GTEST_DIR)/make ; \
+	} || { :; }
+	
+
+#compile
+$(ROOT_DIR)/$(OBJ_DIR)/%_$(_TEST_P).o: src.test/%.cpp | prepare-test
+	$(TEST_CXX) $(CXX_FLAGS_TEST) $< -o $@
+
+$(ROOT_DIR)/$(OBJ_DIR)/%_$(_LIB_P).o: src/%.cpp | prepare 
+	$(CXX) $(CXX_FLAGS) -shared -fPIC $< -o $@
+
+$(ROOT_DIR)/$(OBJ_DIR)/%_$(_TEST_LIB_P).o: src/%.cpp | prepare 
+	$(TEST_CXX) $(CXX_FLAGS) -shared -fPIC $< -o $@
+
+link: $(OBJS)
+	$(CXX) $(OBJS) -o $(OUT_DIR)/$(LIB_FNAME) -shared $(LD_FLAGS)
+
+test: prepare prepare-test link-test-lib link-test 
+
+
+link-test-lib: $(OBJS_TEST_LIB)
+	$(TEST_CXX) $(OBJS_TEST_LIB) -o $(OUT_DIR)/$(TEST_LIB_FNAME) -shared $(LD_FLAGS)
+
+
+link-test: $(OBJS_TEST) link-test-lib
+	$(TEST_CXX) $(OBJS_TEST) $(GTESTA) -o $(OUT_DIR)/$(LIB_NAME)-test $(LD_FLAGS_TEST)
+
+
+run-test: test
+	LD_LIBRARY_PATH=$(OUT_DIR) $(OUT_DIR)/$(LIB_NAME)-test
+
+
+install: 
+	mkdir -p $(PREFIX) && \
+	mkdir -p $(PREFIX)/lib && \
+	mkdir -p $(PREFIX)/include && \
+	mkdir -p $(PREFIX)/bin && \
+	cp -rv $(OUT_DIR)/$(LIB_FNAME) $(PREFIX)/lib/ && \
+	cp -rv include/*.h $(PREFIX)/include/ && \
+	cp -rv include/interfaces $(PREFIX)/include
+
+AT_FILES = config.status Makefile config.log autom4te.cache cppgenerics.pc
+
+clean:
+	rm -rf $(OUT_DIR) && \
+	rm -rf $(OBJ_DIR)
+
+distclean: clean
+	rm -rf $(gitGTEST_DIR) && \
+	rm -rf $(AT_FILES)
+	

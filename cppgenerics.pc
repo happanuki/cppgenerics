@@ -1,0 +1,11 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: cppgenerics
+Description:  general purpose linux c++ library (syscalls wrappers, tools, etc)
+Version: 0.0.1
+
+Cflags: -I${includedir}/foo
+Libs: -L${libdir} -lfoo

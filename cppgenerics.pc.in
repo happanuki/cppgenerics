@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: @PACKAGE_NAME@
+Description: @PACKAGE_DESC@
+Version: @PACKAGE_VERSION@
+
+Cflags: -I${includedir}/foo
+Libs: -L${libdir} -lfoo
