@@ -7,5 +7,5 @@ Name: @PACKAGE_NAME@
 Description: @PACKAGE_DESC@
 Version: @PACKAGE_VERSION@
 
-Cflags: -I${includedir}/foo
-Libs: -L${libdir} -lfoo
+Cflags: -std=c++11 -pthread -I${includedir}/@PACKAGE_NAME@
+Libs: -L${libdir} -l@PACKAGE_NAME@

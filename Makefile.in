@@ -8,7 +8,7 @@ DEBUG=@debug@
 
 VERSION= @PACKAGE_VERSION@
 
-LIB_NAME=CppGenerics
+LIB_NAME=@PACKAGE_NAME@
 LIB_FNAME=lib$(LIB_NAME)-$(VERSION).so
 
 OUT_DIR = $(ROOT_DIR)/out
@@ -126,12 +126,12 @@ run-test: test
 
 install: 
 	mkdir -p $(PREFIX) && \
-	mkdir -p $(PREFIX)/lib && \
+	mkdir -p $(PREFIX)/lib/pkgconfig && \
 	mkdir -p $(PREFIX)/include && \
 	mkdir -p $(PREFIX)/bin && \
 	cp -rv $(OUT_DIR)/$(LIB_FNAME) $(PREFIX)/lib/ && \
-	cp -rv include/*.h $(PREFIX)/include/ && \
-	cp -rv include/interfaces $(PREFIX)/include
+	cp -rv include $(PREFIX)/include/$(LIB_NAME) && \
+	cp -rv cppgenerics.pc $(PREFIX)/lib/pkgconfig/
 
 AT_FILES = config.status Makefile config.log autom4te.cache cppgenerics.pc
 

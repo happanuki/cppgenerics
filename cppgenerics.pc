@@ -7,5 +7,5 @@ Name: cppgenerics
 Description:  general purpose linux c++ library (syscalls wrappers, tools, etc)
 Version: 0.0.1
 
-Cflags: -I${includedir}/foo
-Libs: -L${libdir} -lfoo
+Cflags: -std=c++11 -pthread -I${includedir}/cppgenerics
+Libs: -L${libdir} -lcppgenerics
