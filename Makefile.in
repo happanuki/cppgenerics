@@ -79,10 +79,10 @@ LD_FLAGS_TEST=-Wl,-lpthread -L$(OUT_DIR) -l$(TEST_LIB_NAME)
 .PHONY:	$(TARGETS)
 
 
-default: prepare build test
+default: prepare build test run-test
 
 
-all: prepare build test install
+all: prepare build test run-test install
 
 
 build: prepare link
