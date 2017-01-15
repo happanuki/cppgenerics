@@ -12,7 +12,7 @@ class BitBuffer
 	storeUnit_t* m_storage = nullptr;
 	bool m_isSelfAllocatedStorage = false;
 
-	size_t m_numElements = 0;
+	size_t m_numElements;
 	size_t m_numUnits = 0;
 
 	size_t m_lastUnitBits = 0;
@@ -24,17 +24,16 @@ class BitBuffer
 	void freeMyMem() noexcept;
 
 public:
-	static const int FREE_BIT = 1;
-	static const int FULL_BIT = 0;
+	static const int FREE_BIT; // 1
+	static const int FULL_BIT; // 0
 
 	static size_t getSizeBytes(size_t numElems) noexcept;
 
-	BitBuffer() {} ;
 	BitBuffer(const BitBuffer&);
 	BitBuffer(BitBuffer&&);
 	BitBuffer& operator=(const BitBuffer&);
 
-	BitBuffer(size_t numElements, void* storage = nullptr);
+	BitBuffer(size_t numElements = 1, void* storage = nullptr);
 	~BitBuffer();
 
 	void init() throw (std::exception&);
@@ -50,4 +49,6 @@ public:
 	 * 	-1 if not found
 	 */
 	long find(size_t num) throw (std::exception&);
+
+	uint8_t* const getInternalStorage() const;
 };

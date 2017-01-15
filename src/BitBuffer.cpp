@@ -7,6 +7,9 @@
 #include "Exception.h"
 #include "Logger.h"
 
+const int BitBuffer::FREE_BIT = 1;
+const int BitBuffer::FULL_BIT = 0;
+
 size_t BitBuffer::getSizeBytes(size_t numElems) noexcept
 {
 	auto elemsPerUnit = sizeof(storeUnit_t) * 8;
@@ -52,7 +55,7 @@ void BitBuffer::init() throw (std::exception&)
 {
 	if ( m_storage == nullptr) {
 		m_isSelfAllocatedStorage = true;
-		m_storage = (storeUnit_t*) malloc(m_numUnits * c_unitBytes);
+		m_storage = new storeUnit_t[m_numUnits * c_unitBytes];
 		if ( m_storage == nullptr) {
 			THROW_SYS_EXCEPTION("calloc");
 		}
@@ -205,3 +208,13 @@ BitBuffer& BitBuffer::operator=(const BitBuffer& o)
 	createOther(o);
 	return *this;
 }
+
+
+uint8_t* const BitBuffer::getInternalStorage() const
+{
+	return reinterpret_cast<uint8_t* const>(m_storage);
+}
+
+
+
+
