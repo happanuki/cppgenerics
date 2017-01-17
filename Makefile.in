@@ -1,7 +1,7 @@
 SHELL = @build_shell@
 
-CXX ?= @build_cxx@
-TEST_CXX ?= @test_cxx@
+CXX = @build_cxx@
+TEST_CXX = @test_cxx@
 
 ROOT_DIR = @srcdir@
 DEBUG=@debug@
@@ -17,7 +17,7 @@ OBJ_DIR = $(ROOT_DIR)/obj
 TEST_LIB_NAME=$(LIB_NAME)Test
 TEST_LIB_FNAME=lib$(TEST_LIB_NAME).so
 
-PREFIX ?= @prefix@
+PREFIX = @prefix@
 
 #ifneq ($(DESTDIR),)
 #	PREFIX=$(DESTDIR)
