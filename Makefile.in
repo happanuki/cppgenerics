@@ -19,9 +19,9 @@ TEST_LIB_FNAME=lib$(TEST_LIB_NAME).so
 
 PREFIX ?= @prefix@
 
-ifneq ($(DESTDIR),)
-	PREFIX=$(DESTDIR)
-endif
+#ifneq ($(DESTDIR),)
+#	PREFIX=$(DESTDIR)
+#endif
 
 SRC_DIR=$(ROOT_DIR)/src
 TEST_SRC_DIR=$(ROOT_DIR)/src.test
