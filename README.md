@@ -2,7 +2,7 @@ Build: autoconf , ./configure, make
 
 Xama's CPP linux generics library
 	* Exception - std::exception-based class
-	* Logger - singletone logger 
+	* Logger - singleton logger 
 
 System:
 	* different libc/syscalls wrappers with Exception/Logger
