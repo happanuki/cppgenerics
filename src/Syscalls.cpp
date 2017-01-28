@@ -180,6 +180,16 @@ struct stat System::getFileStat(const std::string& path) throw (std::exception&)
 }
 
 
+off_t System::pread(int fd, void *buf, size_t count, off_t offset) throw (std::exception&)
+{
+	auto out = ::pread(fd,buf,count, offset);
+	if (out < 0) {
+		THROW_SYS_EXCEPTION(std::string("ARGS: ") + std::to_string(fd) + " " + std::to_string((ulong)buf) + " " + std::to_string(count));
+	}
+	return out;
+}
+
+
 bool System::isFileExist(const std::string& fileName) noexcept
 {
         return !access(fileName.c_str(),F_OK);

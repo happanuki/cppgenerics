@@ -131,10 +131,10 @@ run-test: test
 install: 
 	mkdir -p $(PREFIX) && \
 	mkdir -p $(PREFIX)/lib/pkgconfig && \
-	mkdir -p $(PREFIX)/include && \
+	mkdir -p $(PREFIX)/include/$(LIB_NAME) && \
 	mkdir -p $(PREFIX)/bin && \
 	cp -rv $(OUT_DIR)/$(LIB_FNAME) $(PREFIX)/lib/ && \
-	cp -rv include $(PREFIX)/include/$(LIB_NAME) && \
+	cp -rv include/* $(PREFIX)/include/$(LIB_NAME) && \
 	cp -rv cppgenerics.pc $(PREFIX)/lib/pkgconfig/
 
 AT_FILES = config.status Makefile config.log autom4te.cache cppgenerics.pc

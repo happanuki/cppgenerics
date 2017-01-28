@@ -26,6 +26,7 @@ namespace System {
 	 size_t read(int fd, void *buf, size_t count) throw (std::exception&);
 	 size_t write(int fd, const void *buf, size_t count) throw (std::exception&);
 	 off_t lseek(int fd, off_t offset, int whence) throw (std::exception&);
+	 off_t pread(int fd, void *buf, size_t count, off_t offset) throw (std::exception&);
 
 	/*
 	 * readExact(), writeExact() returns number of read() and write() iterations

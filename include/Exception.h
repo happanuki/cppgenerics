@@ -5,18 +5,18 @@
 #include <cerrno>
 #include <string>
 #include <sstream>
+#include <iostream>
 
 class Exception: public std::exception
 {
-	std::ostringstream m_stream;
+	std::stringbuf m_buf;
+	std::ostream m_stream;
 
 public:
-	Exception() = default;
-	Exception(const Exception& e) { m_stream << e.m_stream.str() ; }
+	Exception() : m_stream(&m_buf) {}
+	Exception(const Exception& e): m_stream(&m_buf) { m_stream << e.m_stream.rdbuf(); }
 
-	Exception(std::string&& str) { m_stream << str; }
-
-	const char* what() const throw() override {	return m_stream.str().c_str(); }
+	const char* what() const throw() override {	return m_buf.str().c_str(); }
 
 	std::ostream& operator()() { return m_stream; }
 };
