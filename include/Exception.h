@@ -16,7 +16,6 @@ class Exception: public std::exception
 public:
 	Exception() : m_stream(&m_buf) {}
 	Exception(const Exception& e): m_stream(&m_buf) { m_stream << e.m_buf.str(); }
-	Exception(Exception&& e): m_stream(&m_buf) { m_stream << e.m_buf.str(); }
 
 	const char* what() const throw() override {	outStr = m_buf.str(); return outStr.c_str(); }
 
