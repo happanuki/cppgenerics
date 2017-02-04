@@ -5,7 +5,6 @@
 #include <sys/socket.h>
 #include <sys/resource.h>
 #include <linux/sched.h>
-#include <libgen.h> //dirname(), basename()
 
 #include <random>
 #include <ctime>
@@ -213,12 +212,11 @@ bool System::isDirExist(const std::string& dirName) noexcept
 void System::mkdir_p(std::string pathName) throw (std::exception&)
 {
 	if (System::isDirExist(pathName)) {
-		DEBUGSTDOUTT(pathName << " exists");
 		return;
 	}
 	else {
 		std::string pathCopy (pathName.c_str());
-		auto parentPath = std::string( dirname(const_cast<char*>(pathCopy.c_str())));
+		auto parentPath = std::string( dirname_(const_cast<char*>(pathCopy.c_str())));
 		mkdir_p(parentPath);
 
 		auto ret = mkdir(pathName.c_str(), 0755);
@@ -229,13 +227,13 @@ void System::mkdir_p(std::string pathName) throw (std::exception&)
 }
 
 
-std::string System::dirname(const std::string& path)
+std::string System::dirname_(const std::string& path)
 {
 	return ::dirname(const_cast<char*>(path.c_str()));
 }
 
 
-std::string System::basename(const std::string& path)
+std::string System::basename_(const std::string& path)
 {
 	return ::basename(const_cast<char*>(path.c_str()));
 }

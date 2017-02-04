@@ -6,6 +6,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <libgen.h> //dirname(), basename()
 
 #include <memory>
 #include <string>
@@ -46,8 +47,8 @@ namespace System {
 
 	 void mkdir_p(std::string pathName) throw (std::exception&); //aka mkdir -p
 
-	 std::string dirname(const std::string& path);
-	 std::string basename(const std::string& path);
+	 std::string dirname_(const std::string& path);
+	 std::string basename_(const std::string& path);
 
 
 	 void initModule (const char* path, const char *param_values) throw (std::exception&);
