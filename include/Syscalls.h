@@ -8,9 +8,10 @@
 #include <fcntl.h>
 
 #include <memory>
-#include <exception>
 #include <string>
 #include <limits>
+
+#include "Exception.h"
 
 namespace System {
 
@@ -42,6 +43,11 @@ namespace System {
 	 struct stat getFileStat(const std::string& path) throw (std::exception&);
 	 bool isFileExist(const std::string& fileName) noexcept;
 	 bool isDirExist(const std::string& dirName) noexcept;
+
+	 void mkdir_p(std::string pathName) throw (std::exception&); //aka mkdir -p
+
+	 std::string dirname(const std::string& path);
+	 std::string basename(const std::string& path);
 
 
 	 void initModule (const char* path, const char *param_values) throw (std::exception&);

@@ -5,6 +5,7 @@
 #include <sys/socket.h>
 #include <sys/resource.h>
 #include <linux/sched.h>
+#include <libgen.h> //dirname(), basename()
 
 #include <random>
 #include <ctime>
@@ -209,6 +210,35 @@ bool System::isDirExist(const std::string& dirName) noexcept
 }
 
 
+void System::mkdir_p(std::string pathName) throw (std::exception&)
+{
+	if (System::isDirExist(pathName)) {
+		DEBUGSTDOUTT(pathName << " exists");
+		return;
+	}
+	else {
+		std::string pathCopy (pathName.c_str());
+		auto parentPath = std::string( dirname(const_cast<char*>(pathCopy.c_str())));
+		mkdir_p(parentPath);
+
+		auto ret = mkdir(pathName.c_str(), 0755);
+		if (ret) {
+			THROW_SYS_EXCEPTION("mkdir " << pathName << " failed");
+		}
+	}
+}
+
+
+std::string System::dirname(const std::string& path)
+{
+	return ::dirname(const_cast<char*>(path.c_str()));
+}
+
+
+std::string System::basename(const std::string& path)
+{
+	return ::basename(const_cast<char*>(path.c_str()));
+}
 
 
 static inline int init_module(void *module_image, ulong len, const char *param_values) noexcept
@@ -445,3 +475,6 @@ void System::resched() noexcept
 		sched_yield();
 	}
 }
+
+
+
