@@ -5,6 +5,7 @@
 #include <sys/socket.h>
 #include <sys/resource.h>
 #include <linux/sched.h>
+#include <sys/mount.h>
 
 #include <random>
 #include <ctime>
@@ -474,5 +475,20 @@ void System::resched() noexcept
 	}
 }
 
+void System::mount(	const std::string& source,
+					const std::string& target,
+					const std::string fs_type,
+					unsigned long mountflags,
+					const void *data) throw (std::exception&)
+{
+    auto ret = ::mount(	source.c_str(),
+    					target.c_str(),
+						fs_type.c_str(),
+						mountflags,
+						data);
+    if (! ret) {
+    	THROW_SYS_EXCEPTION("mount() "<< source << " [ " << target << " ] failed");
+    }
 
+}
 

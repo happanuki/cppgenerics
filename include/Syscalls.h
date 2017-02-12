@@ -50,6 +50,11 @@ namespace System {
 	 std::string dirname_(const std::string& path);
 	 std::string basename_(const std::string& path);
 
+	 void mount( const std::string& source,
+			 	 const std::string& target,
+				 const std::string fs_type,
+				 unsigned long mountflags,
+				 const void* data = nullptr) throw (std::exception&) ;
 
 	 void initModule (const char* path, const char *param_values) throw (std::exception&);
 	 void deleteModule (std::string name, int flags = 0) throw (std::exception&); //std::string name should be by value
