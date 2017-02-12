@@ -477,7 +477,7 @@ void System::resched() noexcept
 
 void System::mount(	const std::string& source,
 					const std::string& target,
-					const std::string fs_type,
+					const std::string& fs_type,
 					unsigned long mountflags,
 					const void *data) throw (std::exception&)
 {

@@ -52,7 +52,7 @@ namespace System {
 
 	 void mount( const std::string& source,
 			 	 const std::string& target,
-				 const std::string fs_type,
+				 const std::string& fs_type,
 				 unsigned long mountflags,
 				 const void* data = nullptr) throw (std::exception&) ;
 
