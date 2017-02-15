@@ -4,6 +4,7 @@
 #include <string>
 #include <ostream>
 #include <mutex>
+#include <fstream>
 
 #include "Syscalls.h"
 
@@ -11,6 +12,9 @@ class Logger {
 
 	std::ostream m_ostream;
 	std::mutex m_ostreamMtx;
+
+	std::string m_filename;
+	std::fstream m_fileStream;
 
 	Logger();
 
@@ -23,6 +27,7 @@ public:
 
 	void setLogSTDOUT();
 	void setLogSTDERR();
+	void setLogFile(std::string filename = {});
 
 	std::ostream& log();
 
@@ -66,6 +71,13 @@ public:
 			Logger::getInstance().log() << "<" << System::timeStr(nullptr) << "> " << MSG << std::endl ; \
 		}
 
+#define LOGSTDOUTT(MSG) \
+		{ \
+			std::lock_guard<Logger> g( Logger::getInstance() ); \
+			Logger::getInstance().setLogSTDOUT() ; \
+			Logger::getInstance().log() << "<" << System::timeStr(nullptr) << "> " << MSG << std::endl ; \
+		}
+
 #define DEBUGSTDOUT(DMSG)
 #define DEBUGSTDOUTT(DMSG)
 #endif
@@ -75,3 +87,10 @@ public:
 
 #define WARNSTDOUT(DMSG) LOGSTDOUT( "** WARN ** \t" << DMSG )
 #define WARNSTDOUTT(DMSG) LOGSTDOUTT( "** WARN ** \t" << DMSG )
+
+#define LOGINFILE(MSG,...) \
+		{ \
+			std::lock_guard<Logger> g( Logger::getInstance() ); \
+			Logger::getInstance().setLogFile(__VA_ARGS__) ; \
+			Logger::getInstance().log() << MSG << std::endl ; \
+		}

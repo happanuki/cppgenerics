@@ -12,6 +12,9 @@ Logger::Logger() :
 
 Logger::~Logger()
 {
+	if ( m_fileStream.is_open()) {
+		m_fileStream.close();
+	}
 }
 
 Logger& Logger::getInstance() throw (std::exception&)
@@ -45,4 +48,25 @@ void Logger::setLogSTDERR()
 std::ostream& Logger::log()
 {
 	return m_ostream;
+}
+
+
+void Logger::setLogFile(std::string filename)
+{
+	if (filename.empty()) {
+		return;
+	}
+	else {
+		if ( m_fileStream.is_open() ) {
+			if ( m_filename == filename) {
+				return;
+			}
+
+			m_fileStream.close();
+			m_filename = filename;
+		}
+	}
+
+	m_fileStream.open( filename.c_str(),std::fstream::out | std::fstream::app );
+	m_ostream.rdbuf( m_fileStream.rdbuf() );
 }

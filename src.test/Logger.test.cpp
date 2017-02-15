@@ -1,6 +1,8 @@
 #include <vector>
 #include <thread>
 #include <mutex>
+#include <algorithm>
+#include <fstream>
 
 #include "gtest/gtest.h"
 
@@ -69,3 +71,32 @@ TEST_F(LoggerTest,checkLoggerOutputOstream)
 	std::string output = testing::internal::GetCapturedStdout();
 	EXPECT_EQ(testString, output);
 }
+
+
+TEST_F(LoggerTest,checkLoggerOutputFile)
+{
+	std::string file("/tmp/testLogger.file");
+
+	unlink(file.c_str());
+
+	std::vector<std::string> v = { "Hello your world", "World!","You" };
+
+	for (auto& i: v) {
+		LOGINFILE(i, file);
+	}
+
+	std::fstream fs(file, std::fstream::in);
+
+	std::string out;
+	int idx=0;
+
+	while ( std::getline(fs,out,'\n')) {
+
+		auto v1 = out;
+		auto v2 = v[idx++];
+
+		ASSERT_STREQ( v1.c_str(), v2.c_str() );
+	}
+
+}
+
