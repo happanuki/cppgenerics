@@ -7,6 +7,7 @@
 #include <linux/sched.h>
 #include <sys/mount.h>
 
+
 #include <random>
 #include <ctime>
 
@@ -491,4 +492,18 @@ void System::mount(	const std::string& source,
     }
 
 }
+
+
+winsize System::getTerminalSize() throw (std::exception&)
+{
+	struct winsize w;
+
+	auto ret = ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+	if (! ret ) {
+		THROW_SYS_EXCEPTION("ioctl TIOCGWINSZ failed, unknown terminal size");
+	}
+
+	return w;
+}
+
 

@@ -5,8 +5,10 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/ioctl.h> // terminal size,
 #include <fcntl.h>
 #include <libgen.h> //dirname(), basename()
+
 
 #include <memory>
 #include <string>
@@ -80,6 +82,7 @@ namespace System {
 	 int getpriority( int which, id_t who) throw (std::exception&);
 	 void setpriority( int which, id_t who, int prio) throw (std::exception&);
 
-	 void resched() noexcept;
+	 void resched() noexcept; //
 
+	 winsize getTerminalSize() throw (std::exception&) ;
 }
