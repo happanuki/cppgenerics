@@ -35,7 +35,12 @@ public:
 	ProgressBar(std::string caption,std::ostream& stream = std::cout, size_t total=100, size_t initial=0);
 	virtual ~ProgressBar();
 
+
+	/*
+	 * implicitly calls redraw()
+	 */
 	virtual void notify(size_t units=1);
+
 	virtual void redraw();
 	virtual void startOutput();
 	virtual void stopOutput();
