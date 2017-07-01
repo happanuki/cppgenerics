@@ -66,10 +66,10 @@ namespace System {
 
 	 uint64_t getCurUsecs() throw (std::exception&);
 	 void nanoSleep(uint64_t nanosecs) throw (std::exception&);
-	
+
 	 time_t time(time_t *time) throw (std::exception&);
 	 std::string timeStr(time_t* timetOtherPtr) throw (std::exception&);
-	
+
 	 int socket(int domain, int type, int protocol) throw (std::exception&);
 	 void bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen) throw (std::exception&);
 	 int recvmsg(int sockfd, struct msghdr *msg, int flags) throw (std::exception&);

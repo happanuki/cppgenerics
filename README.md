@@ -1,8 +1,9 @@
-Build: autoconf , ./configure, make 
+Build: autoconf , ./configure, make
 
 Xama's CPP linux generics library
 	* Exception - std::exception-based class
-	* Logger - singleton logger 
+	* Logger - singleton logger
+	* ThreadPool - std-based template ThreadPool class
 
 System:
 	* different libc/syscalls wrappers with Exception/Logger

@@ -45,7 +45,7 @@ TEST_F(ExceptionTest, CopyTest)
 	e() << errText;
 
 	Exception e2(e);
-	
+
 	EXPECT_STREQ(errText.c_str(),e2.what());
 
 }
