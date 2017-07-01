@@ -1,8 +1,8 @@
-#include "IPC_MutexManager.h"
+#include "cppgenerics/IPC_MutexManager.h"
 
-#include "Syscalls.h"
-#include "Exception.h"
-#include "Logger.h"
+#include "cppgenerics/Syscalls.h"
+#include "cppgenerics/Exception.h"
+#include "cppgenerics/Logger.h"
 
 namespace IPC
 {

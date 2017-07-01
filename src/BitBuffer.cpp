@@ -3,9 +3,9 @@
 #include <cstdlib>
 #include <string>
 
-#include "BitBuffer.h"
-#include "Exception.h"
-#include "Logger.h"
+#include "cppgenerics/BitBuffer.h"
+#include "cppgenerics/Exception.h"
+#include "cppgenerics/Logger.h"
 
 const int BitBuffer::FREE_BIT = 1;
 const int BitBuffer::FULL_BIT = 0;

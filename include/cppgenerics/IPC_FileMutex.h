@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IPC_Mutex.h"
+#include "cppgenerics/IPC_Mutex.h"
 
 namespace IPC
 {

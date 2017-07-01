@@ -6,7 +6,7 @@
 #include <vector>
 #include <mutex>
 #include <thread>
-#include "Logger.h"
+#include "cppgenerics/Logger.h"
 
 namespace Signals {
 

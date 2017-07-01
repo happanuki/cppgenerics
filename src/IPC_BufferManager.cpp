@@ -1,4 +1,4 @@
-#include "unistd.h"
+#include <unistd.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
 #include <linux/sched.h>
@@ -7,11 +7,11 @@
 #include <mutex>
 #include <cstring>
 
-#include "IPC_Buffer.h"
-#include "FileLock.h"
-#include "Syscalls.h"
-#include "Exception.h"
-#include "Logger.h"
+#include "cppgenerics/IPC_Buffer.h"
+#include "cppgenerics/FileLock.h"
+#include "cppgenerics/Syscalls.h"
+#include "cppgenerics/Exception.h"
+#include "cppgenerics/Logger.h"
 
 namespace IPC {
 

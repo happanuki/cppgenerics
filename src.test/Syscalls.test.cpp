@@ -4,7 +4,7 @@
 
 #include "gtest/gtest.h"
 
-#include "Syscalls.h"
+#include "cppgenerics/Syscalls.h"
 
 class SyscallsTest : public ::testing::Test {
 protected:

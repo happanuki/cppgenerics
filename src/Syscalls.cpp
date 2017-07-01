@@ -11,9 +11,9 @@
 #include <random>
 #include <ctime>
 
-#include "Syscalls.h"
-#include "Exception.h"
-#include "Logger.h"
+#include "cppgenerics/Syscalls.h"
+#include "cppgenerics/Exception.h"
+#include "cppgenerics/Logger.h"
 
 std::unique_ptr<char[]> System::getBufferRAI(size_t size, bool isZero) throw (std::exception&)
 {

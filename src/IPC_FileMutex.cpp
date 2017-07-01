@@ -1,15 +1,15 @@
-#include "fcntl.h"
-#include "unistd.h"
+#include <fcntl.h>
+#include <unistd.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
 
 #include <mutex>
 
-#include "IPC_FileMutex.h"
-#include "FileLock.h"
-#include "Syscalls.h"
-#include "Exception.h"
-#include "Logger.h"
+#include "cppgenerics/IPC_FileMutex.h"
+#include "cppgenerics/FileLock.h"
+#include "cppgenerics/Syscalls.h"
+#include "cppgenerics/Exception.h"
+#include "cppgenerics/Logger.h"
 
 
 namespace IPC

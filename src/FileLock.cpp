@@ -1,6 +1,6 @@
-#include "FileLock.h"
-#include "Exception.h"
-#include "Logger.h"
+#include "cppgenerics/FileLock.h"
+#include "cppgenerics/Exception.h"
+#include "cppgenerics/Logger.h"
 
 namespace System {
 

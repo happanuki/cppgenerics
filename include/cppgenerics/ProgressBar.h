@@ -8,7 +8,7 @@
 #pragma once
 
 #include <iostream>
-#include "Logger.h"
+#include "cppgenerics/Logger.h"
 
 class ProgressBar
 {

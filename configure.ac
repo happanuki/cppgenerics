@@ -1,4 +1,4 @@
-AC_INIT(cppgenerics, 0.0.1, voidstaryou@gmail.com)
+AC_INIT(cppgenerics, 0.0.2, voidstaryou@gmail.com)
 
 PACKAGE_DESC=" general purpose linux c++ library (syscalls wrappers, tools, etc)"
 AC_SUBST([PACKAGE_DESC])

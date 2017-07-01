@@ -1,7 +1,7 @@
 #include <iostream>
 #include <memory>
 
-#include "Logger.h"
+#include "cppgenerics/Logger.h"
 
 static std::unique_ptr<Logger> loggerHolder;
 

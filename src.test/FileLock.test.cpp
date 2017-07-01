@@ -2,9 +2,9 @@
 
 #include <mutex>
 
-#include "FileLock.h"
-#include "Exception.h"
-#include "Syscalls.h"
+#include "cppgenerics/FileLock.h"
+#include "cppgenerics/Exception.h"
+#include "cppgenerics/Syscalls.h"
 
 class FileLockTest : public ::testing::Test {
 protected:

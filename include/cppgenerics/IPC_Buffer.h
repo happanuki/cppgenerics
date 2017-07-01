@@ -5,7 +5,7 @@
 #include <memory>
 #include <map>
 
-#include "IPC_Mutex.h"
+#include "cppgenerics/IPC_Mutex.h"
 
 #define IPC_BUFFER_DESCRIPTOR_MAX_LEN 50
 #define IPC_BUFFER_MANAGER_FILE "/tmp/.ipc.bufferManager.key"

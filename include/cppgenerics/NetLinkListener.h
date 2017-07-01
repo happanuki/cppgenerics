@@ -8,7 +8,7 @@
 #include <mutex>
 #include <list>
 
-#include "interfaces/Observer_I.h"
+#include "cppgenerics/interfaces/Observer_I.h"
 
 namespace System {
 

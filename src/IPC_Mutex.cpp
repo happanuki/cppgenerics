@@ -1,4 +1,4 @@
-#include "unistd.h"
+#include <unistd.h>
 #include <linux/futex.h>
 #include <sys/time.h>
 #include <sys/syscall.h>
@@ -7,10 +7,10 @@
 
 #include <climits>
 
-#include "IPC_Mutex.h"
-#include "Syscalls.h"
-#include "Exception.h"
-#include "Logger.h"
+#include "cppgenerics/IPC_Mutex.h"
+#include "cppgenerics/Syscalls.h"
+#include "cppgenerics/Exception.h"
+#include "cppgenerics/Logger.h"
 
 #define L_FUTEX_STATE_LOCKED 0
 #define L_FUTEX_STATE_UNLOCKED 1

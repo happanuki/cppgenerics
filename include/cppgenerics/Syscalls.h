@@ -14,7 +14,7 @@
 #include <string>
 #include <limits>
 
-#include "Exception.h"
+#include "cppgenerics/Exception.h"
 
 namespace System {
 

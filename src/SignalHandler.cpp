@@ -3,10 +3,10 @@
 #include <functional>
 #include <map>
 
-#include "SignalHandler.h"
-#include "Exception.h"
-#include "Logger.h"
-#include "Syscalls.h"
+#include "cppgenerics/SignalHandler.h"
+#include "cppgenerics/Exception.h"
+#include "cppgenerics/Logger.h"
+#include "cppgenerics/Syscalls.h"
 
 namespace Signals {
 

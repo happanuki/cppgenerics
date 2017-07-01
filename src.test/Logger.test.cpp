@@ -6,7 +6,7 @@
 
 #include "gtest/gtest.h"
 
-#include "Logger.h"
+#include "cppgenerics/Logger.h"
 
 class LoggerTest : public ::testing::Test {
 protected:

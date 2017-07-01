@@ -7,8 +7,8 @@
 
 #include "gtest/gtest.h"
 
-#include "SignalHandler.h"
-#include "Logger.h"
+#include "cppgenerics/SignalHandler.h"
+#include "cppgenerics/Logger.h"
 
 class SignalHandlerTest : public ::testing::Test {
 protected:

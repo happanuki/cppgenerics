@@ -5,7 +5,7 @@
  *      Author: xama
  */
 
-#include "ProgressBar.h"
+#include "cppgenerics/ProgressBar.h"
 
 ProgressBar::ProgressBar(std::string caption,std::ostream& stream, size_t total, size_t initial):
 	m_caption(caption),

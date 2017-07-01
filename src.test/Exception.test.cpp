@@ -4,7 +4,7 @@
 
 #include "gtest/gtest.h"
 
-#include "Exception.h"
+#include "cppgenerics/Exception.h"
 
 class ExceptionTest : public ::testing::Test {
 protected:

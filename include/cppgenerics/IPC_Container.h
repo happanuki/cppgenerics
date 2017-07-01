@@ -3,7 +3,7 @@
 #include <mutex>
 #include <string>
 
-#include "IPC_Buffer.h"
+#include "cppgenerics/IPC_Buffer.h"
 
 namespace IPC {
 

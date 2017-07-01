@@ -8,10 +8,10 @@
 
 #include "gtest/gtest.h"
 
-#include "BitBuffer.h"
-#include "Syscalls.h"
-#include "Logger.h"
-#include "Exception.h"
+#include "cppgenerics/BitBuffer.h"
+#include "cppgenerics/Syscalls.h"
+#include "cppgenerics/Logger.h"
+#include "cppgenerics/Exception.h"
 
 class BitBufferTest : public ::testing::Test {
 

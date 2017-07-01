@@ -2,10 +2,10 @@
 
 #include <memory>
 
-#include "NetLinkListener.h"
-#include "Syscalls.h"
-#include "Exception.h"
-#include "Logger.h"
+#include "cppgenerics/NetLinkListener.h"
+#include "cppgenerics/Syscalls.h"
+#include "cppgenerics/Exception.h"
+#include "cppgenerics/Logger.h"
 
 namespace System {
 

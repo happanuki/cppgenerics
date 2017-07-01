@@ -6,9 +6,9 @@
 #include <cstring>
 #include <mutex>
 
-#include "BitBuffer.h"
-#include "IPC_Buffer.h"
-#include "Logger.h"
+#include "cppgenerics/BitBuffer.h"
+#include "cppgenerics/IPC_Buffer.h"
+#include "cppgenerics/Logger.h"
 
 namespace IPC {
 

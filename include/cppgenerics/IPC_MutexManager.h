@@ -1,6 +1,6 @@
 #pragma once
 
-#include "IPC_Buffer.h"
+#include "cppgenerics/IPC_Buffer.h"
 
 namespace IPC
 {
