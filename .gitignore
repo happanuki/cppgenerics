@@ -20,3 +20,4 @@ config.log
 autom4te.cache/**
 cppgenerics.pc
 configure
+trimExcessiveSpaces.sh

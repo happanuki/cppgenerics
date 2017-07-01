@@ -7,7 +7,7 @@
 
 #include "cppgenerics/Logger.h"
 
-namespace ThreadPool {
+namespace CppGenerics {
 
 /*
  * returns std::thread< void(const T& arg)>
@@ -125,4 +125,4 @@ template < typename T> std::thread ThreadPool<T>::getThread(const T& arg)
 }
 
 
-} // namespace ThreadPool
+} // namespace CppGenerics

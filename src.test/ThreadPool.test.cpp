@@ -25,7 +25,7 @@ TEST_F(ThreadPoolTest, general_functionality)
 		std::cout << "STR : " << val.str << "\t\tNUM: " << val.num << std::endl;
 	};
 
-	ThreadPool::ThreadPool<Arg_t> t(f,2);
+	CppGenerics::ThreadPool<Arg_t> t(f,2);
 
 	for (auto i = 0; i < 5; ++i) {
 
