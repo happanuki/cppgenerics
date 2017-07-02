@@ -7,6 +7,9 @@
 #include "cppgenerics/Exception.h"
 #include "cppgenerics/Logger.h"
 
+namespace CppGenerics {
+
+
 const int BitBuffer::FREE_BIT = 1;
 const int BitBuffer::FULL_BIT = 0;
 
@@ -216,5 +219,5 @@ uint8_t* const BitBuffer::getInternalStorage() const
 }
 
 
-
+} // namespace CppGenerics
 

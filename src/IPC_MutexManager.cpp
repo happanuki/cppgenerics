@@ -4,8 +4,10 @@
 #include "cppgenerics/Exception.h"
 #include "cppgenerics/Logger.h"
 
-namespace IPC
-{
+
+namespace CppGenerics {
+
+namespace IPC {
 
 /*
  * MutexManager
@@ -92,4 +94,6 @@ Mutex MutexManager::getMutex(const std::string& id) throw (std::exception&)
 }
 
 
-} //end namespace
+} // end namespace IPC
+
+} // namespace CppGenerics

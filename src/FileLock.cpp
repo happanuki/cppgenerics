@@ -2,6 +2,8 @@
 #include "cppgenerics/Exception.h"
 #include "cppgenerics/Logger.h"
 
+
+namespace CppGenerics {
 namespace System {
 
 
@@ -37,4 +39,6 @@ void FileLock::unlock() noexcept
 	m_locker = false;
 }
 
-} //namespace
+} //namespace System
+
+} // namespace CppGenerics

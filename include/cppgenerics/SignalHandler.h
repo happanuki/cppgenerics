@@ -8,6 +8,9 @@
 #include <thread>
 #include "cppgenerics/Logger.h"
 
+
+namespace CppGenerics {
+
 namespace Signals {
 
 using _sig_t = int;
@@ -60,4 +63,6 @@ public:
 	void rmSignal(_sig_t sigNum);
 };
 
-} //namespace Signals
+} // namespace Signals
+
+} // namespace CppGenerics

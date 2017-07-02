@@ -7,6 +7,10 @@
 #include <sstream>
 #include <iostream>
 
+
+namespace CppGenerics {
+
+
 class Exception: public std::exception
 {
 	std::stringbuf m_buf;
@@ -22,10 +26,12 @@ public:
 	std::ostream& operator()() { return m_stream; }
 };
 
+} // namespace
+
 
 #define THROW_SYS_EXCEPTION( MSG ) \
 			{ \
-				Exception e; \
+				CppGenerics::Exception e; \
 				e() << "[ " <<  __FILE__  << ":" << __LINE__ << " @ \"" << __PRETTY_FUNCTION__ << "\" ] : " << MSG << \
 				"\n\tERRNO : " << errno << "\n\tERRMSG: " << strerror(errno) ; \
 				throw e; \
@@ -33,7 +39,7 @@ public:
 
 #define THROW_LOGIC_EXCEPTION( MSG ) \
 			{ \
-				Exception e; \
+				CppGenerics::Exception e; \
 				e() << "[ " <<  __FILE__  << ":" << __LINE__ << " @ \"" << __PRETTY_FUNCTION__ << "\" ] : " << MSG ; \
 				throw e; \
 			}

@@ -8,6 +8,9 @@
 
 #include "cppgenerics/Logger.h"
 
+
+using namespace CppGenerics;
+
 class LoggerTest : public ::testing::Test {
 protected:
 	Logger* m_logger = nullptr;

@@ -5,6 +5,8 @@
 
 #include "cppgenerics/IPC_Buffer.h"
 
+namespace CppGenerics {
+
 namespace IPC {
 
 /*
@@ -78,4 +80,8 @@ public:
 	Buffer& getBuffer() { return m_buffer; }
 
 };
-} //namespace
+
+} //namespace IPC
+
+} //namespace CppGenerics
+

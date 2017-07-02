@@ -16,6 +16,9 @@
 #define L_FUTEX_STATE_UNLOCKED 1
 #define L_FUTEX_STATE_INITIAL 1
 
+
+namespace CppGenerics {
+
 namespace IPC {
 
 static inline int sys_futex(futex_id_t* uaddr, int futex_op, int val, const struct timespec *timeout, int *uaddr2, int val3)
@@ -78,4 +81,6 @@ void Mutex::unlock() noexcept
 }
 
 
-} //namespace
+} // namespace IPC
+
+} // namespace CppGenerics

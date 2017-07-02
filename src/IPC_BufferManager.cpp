@@ -13,6 +13,9 @@
 #include "cppgenerics/Exception.h"
 #include "cppgenerics/Logger.h"
 
+
+namespace CppGenerics {
+
 namespace IPC {
 
 
@@ -485,4 +488,6 @@ Buffer::~Buffer()
 
 
 
-} //namespace
+} // namespace IPC
+
+} // namespace CppGenerics

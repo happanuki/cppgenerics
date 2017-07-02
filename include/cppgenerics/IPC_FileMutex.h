@@ -2,8 +2,9 @@
 
 #include "cppgenerics/IPC_Mutex.h"
 
-namespace IPC
-{
+namespace CppGenerics {
+
+namespace IPC {
 
 class FileMutex {
 
@@ -27,4 +28,7 @@ public:
 	inline void unlock() noexcept { m_mtx->unlock(); }
 };
 
-} //namespace
+} //namespace IPC
+
+} // namespace CppGenerics
+

@@ -3,6 +3,9 @@
 
 #include "cppgenerics/Logger.h"
 
+namespace CppGenerics {
+
+
 static std::unique_ptr<Logger> loggerHolder;
 
 Logger::Logger() :
@@ -70,3 +73,5 @@ void Logger::setLogFile(std::string filename)
 	m_fileStream.open( filename.c_str(),std::fstream::out | std::fstream::app );
 	m_ostream.rdbuf( m_fileStream.rdbuf() );
 }
+
+} // namespace CppGenerics

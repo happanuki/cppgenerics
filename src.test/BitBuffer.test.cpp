@@ -13,6 +13,8 @@
 #include "cppgenerics/Logger.h"
 #include "cppgenerics/Exception.h"
 
+using namespace CppGenerics;
+
 class BitBufferTest : public ::testing::Test {
 
 protected:

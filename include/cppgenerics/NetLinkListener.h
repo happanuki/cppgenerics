@@ -10,6 +10,8 @@
 
 #include "cppgenerics/interfaces/Observer_I.h"
 
+namespace CppGenerics {
+
 namespace System {
 
 enum NetLinkInterfaceEvents
@@ -71,3 +73,5 @@ public:
 };
 
 } //namespace
+
+} // namespace CppGenerics

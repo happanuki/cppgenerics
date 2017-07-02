@@ -2,8 +2,8 @@
 
 #include "cppgenerics/IPC_Buffer.h"
 
-namespace IPC
-{
+namespace CppGenerics {
+namespace IPC {
 
 class MutexManager
 {
@@ -35,4 +35,6 @@ public:
 	Mutex getMutex(const std::string& id) throw (std::exception&);
 };
 
-} //end namespace
+} //end namespace IPC
+
+} // namespace CppGenerics

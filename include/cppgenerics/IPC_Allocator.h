@@ -10,6 +10,8 @@
 #include "cppgenerics/IPC_Buffer.h"
 #include "cppgenerics/Logger.h"
 
+namespace CppGenerics {
+
 namespace IPC {
 
 template <class T> class Allocator
@@ -135,3 +137,4 @@ template <class T, class U> bool operator!=(const IPC::Allocator<T>& lhs, const 
 } //namespace IPC
 
 
+} // namespace CppGenerics

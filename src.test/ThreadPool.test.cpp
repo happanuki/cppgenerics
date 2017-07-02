@@ -3,6 +3,8 @@
 #include "cppgenerics/ThreadPool.h"
 #include <iostream>
 
+using namespace CppGenerics;
+
 class ThreadPoolTest : public ::testing::Test {
 
 protected:

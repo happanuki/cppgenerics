@@ -8,6 +8,8 @@
 #include "cppgenerics/Logger.h"
 #include "cppgenerics/Syscalls.h"
 
+namespace CppGenerics {
+
 namespace Signals {
 
 //using _handler_t = void(*)(int, siginfo_t*, void*);
@@ -151,3 +153,5 @@ void SignalHandler::rmSignal(_sig_t sigNum)
 
 
 } //namespace
+
+} // namespace CppGenerics

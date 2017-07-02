@@ -6,6 +6,8 @@
 
 #include "cppgenerics/Syscalls.h"
 
+using namespace CppGenerics;
+
 class SyscallsTest : public ::testing::Test {
 protected:
 

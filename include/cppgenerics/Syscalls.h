@@ -16,6 +16,8 @@
 
 #include "cppgenerics/Exception.h"
 
+namespace CppGenerics {
+
 namespace System {
 
 	 std::unique_ptr<char[]> getBufferRAI(size_t size, bool isZero = false) throw (std::exception&);
@@ -85,4 +87,6 @@ namespace System {
 	 void resched() noexcept; //
 
 	 winsize getTerminalSize() throw (std::exception&) ;
-}
+} // namespace System
+
+} // namespace CppGenerics

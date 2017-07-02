@@ -6,6 +6,8 @@
 #define IPC_MUTEXMANAGER_DESCRIPTOR_MAX_LEN 50
 #define IPC_MUTEXMANAGER_CAPACITY 1000
 
+namespace CppGenerics {
+
 namespace IPC {
 
 typedef uint32_t __attribute__ ((aligned(4))) futex_id_t  ;
@@ -29,5 +31,7 @@ public:
 	inline futex_id_t* getPtr() noexcept { return m_futexId; }
 };
 
-} //namespace
+} //namespace IPC
+
+} // namespace CppGenerics
 

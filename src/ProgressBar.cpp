@@ -7,6 +7,8 @@
 
 #include "cppgenerics/ProgressBar.h"
 
+namespace CppGenerics {
+
 ProgressBar::ProgressBar(std::string caption,std::ostream& stream, size_t total, size_t initial):
 	m_caption(caption),
 	m_total(total),
@@ -93,3 +95,5 @@ void ProgressBar::stopOutput()
 		WARNSTDOUT("Output already stopped");
 	}
 }
+
+} // namespace CppGenerics

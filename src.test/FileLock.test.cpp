@@ -6,6 +6,9 @@
 #include "cppgenerics/Exception.h"
 #include "cppgenerics/Syscalls.h"
 
+
+using namespace CppGenerics;
+
 class FileLockTest : public ::testing::Test {
 protected:
 	int m_badFd = -5;

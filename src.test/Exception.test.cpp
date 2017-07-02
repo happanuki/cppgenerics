@@ -6,6 +6,9 @@
 
 #include "cppgenerics/Exception.h"
 
+
+using namespace CppGenerics;
+
 class ExceptionTest : public ::testing::Test {
 protected:
 

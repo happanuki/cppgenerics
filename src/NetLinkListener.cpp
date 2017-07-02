@@ -7,6 +7,8 @@
 #include "cppgenerics/Exception.h"
 #include "cppgenerics/Logger.h"
 
+namespace CppGenerics {
+
 namespace System {
 
 
@@ -216,3 +218,5 @@ void NetLinkListener::removeInterfaceEvent(const InterfaceEventCB_t& in) throw (
 }
 
 } //namespace
+
+} // namespace CppGenerics

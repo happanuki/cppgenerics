@@ -11,6 +11,8 @@
 #define IPC_BUFFER_MANAGER_FILE "/tmp/.ipc.bufferManager.key"
 #define IPC_BUFFER_MANAGER_CAPACITY 1000
 
+namespace CppGenerics {
+
 namespace IPC
 {
 
@@ -133,4 +135,6 @@ public:
 };
 
 
-} //namespace
+} //namespace IPC
+
+} // namespace CppGenerics

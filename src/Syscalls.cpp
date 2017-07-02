@@ -15,6 +15,8 @@
 #include "cppgenerics/Exception.h"
 #include "cppgenerics/Logger.h"
 
+namespace CppGenerics {
+
 std::unique_ptr<char[]> System::getBufferRAI(size_t size, bool isZero) throw (std::exception&)
 {
 	std::unique_ptr<char[]> out( new char[size] );
@@ -506,4 +508,4 @@ winsize System::getTerminalSize() throw (std::exception&)
 	return w;
 }
 
-
+} // namespace CppGenerics

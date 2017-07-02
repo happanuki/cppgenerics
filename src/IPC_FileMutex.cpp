@@ -12,8 +12,9 @@
 #include "cppgenerics/Logger.h"
 
 
-namespace IPC
-{
+namespace CppGenerics {
+
+namespace IPC {
 
 /*
  * FileMutex
@@ -83,4 +84,6 @@ FileMutex::FileMutex(std::string&& filename) :
 }
 
 
-} //namespace
+} // namespace IPC
+
+} // namespace CppGenerics

@@ -10,6 +10,8 @@
 #include <iostream>
 #include "cppgenerics/Logger.h"
 
+namespace CppGenerics {
+
 class ProgressBar
 {
 
@@ -47,3 +49,4 @@ public:
 
 };
 
+} // namespace CppGenerics

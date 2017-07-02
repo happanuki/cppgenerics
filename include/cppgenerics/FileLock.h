@@ -4,6 +4,9 @@
 
 #include <exception>
 
+
+namespace CppGenerics {
+
 namespace System {
 
 /*
@@ -28,4 +31,6 @@ public:
 	void unlock() noexcept;
 };
 
-} //end namespace
+} // System
+
+} //CppGenerics

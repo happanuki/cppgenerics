@@ -3,6 +3,9 @@
 #include <cstddef>
 #include <exception>
 
+
+namespace CppGenerics {
+
 class BitBuffer
 {
 	using storeUnit_t = ulong;
@@ -52,3 +55,5 @@ public:
 
 	uint8_t* const getInternalStorage() const;
 };
+
+} //namespace CppGenerics

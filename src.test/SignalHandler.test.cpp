@@ -10,6 +10,8 @@
 #include "cppgenerics/SignalHandler.h"
 #include "cppgenerics/Logger.h"
 
+using namespace CppGenerics;
+
 class SignalHandlerTest : public ::testing::Test {
 protected:
 	void SetUp() override {}
