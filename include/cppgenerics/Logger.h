@@ -43,7 +43,7 @@ public:
 #ifdef DEBUG
 #define LOGSTDOUT(MSG) \
 		{ \
-			std::lock_guard<Logger> g( CppGenerics::Logger::getInstance() ); \
+			std::lock_guard<CppGenerics::Logger> g( CppGenerics::Logger::getInstance() ); \
 			CppGenerics::Logger::getInstance().setLogSTDOUT() ; \
 			CppGenerics::Logger::getInstance().log() << \
 				"[ " __FILE__ << ":"  << __LINE__ << " @ \"" << __PRETTY_FUNCTION__ << "\" ] :\t" << MSG << std::endl ; \
@@ -51,9 +51,9 @@ public:
 
 #define LOGSTDOUTT(MSG) \
 		{ \
-			std::lock_guard<Logger> g( CppGenerics::Logger::getInstance() ); \
+			std::lock_guard<CppGenerics::Logger> g( CppGenerics::Logger::getInstance() ); \
 			CppGenerics::Logger::getInstance().setLogSTDOUT() ; \
-			CppGenerics::Logger::getInstance().log() << "<" << System::timeStr(nullptr) << "> " \
+			CppGenerics::Logger::getInstance().log() << "<" << CppGenerics::System::timeStr(nullptr) << "> " \
 				"[ " __FILE__ << ":"  << __LINE__ << " @ \"" << __PRETTY_FUNCTION__ << "\" ] :\t" << MSG << std::endl ; \
 		}
 
@@ -63,23 +63,23 @@ public:
 #else
 #define LOGSTDOUT(MSG) \
 		{ \
-			std::lock_guard<Logger> g( CppGenerics::Logger::getInstance() ); \
+			std::lock_guard<CppGenerics::Logger> g( CppGenerics::Logger::getInstance() ); \
 			CppGenerics::Logger::getInstance().setLogSTDOUT() ; \
 			CppGenerics::Logger::getInstance().log() << MSG << std::endl ; \
 		}
 
 #define LOGSTDOUTT(MSG) \
 		{ \
-			std::lock_guard<Logger> g( CppGenerics::Logger::getInstance() ); \
+			std::lock_guard<CppGenerics::Logger> g( CppGenerics::Logger::getInstance() ); \
 			CppGenerics::Logger::getInstance().setLogSTDOUT() ; \
-			CppGenerics::Logger::getInstance().log() << "<" << System::timeStr(nullptr) << "> " << MSG << std::endl ; \
+			CppGenerics::Logger::getInstance().log() << "<" << CppGenerics::System::timeStr(nullptr) << "> " << MSG << std::endl ; \
 		}
 
 #define LOGSTDOUTT(MSG) \
 		{ \
-			std::lock_guard<Logger> g( CppGenerics::Logger::getInstance() ); \
+			std::lock_guard<CppGenerics::Logger> g( CppGenerics::Logger::getInstance() ); \
 			CppGenerics::Logger::getInstance().setLogSTDOUT() ; \
-			CppGenerics::Logger::getInstance().log() << "<" << System::timeStr(nullptr) << "> " << MSG << std::endl ; \
+			CppGenerics::Logger::getInstance().log() << "<" << CppGenerics::System::timeStr(nullptr) << "> " << MSG << std::endl ; \
 		}
 
 #define DEBUGSTDOUT(DMSG)
@@ -94,7 +94,7 @@ public:
 
 #define LOGINFILE(MSG,...) \
 		{ \
-			std::lock_guard<Logger> g( CppGenerics::Logger::getInstance() ); \
+			std::lock_guard<CppGenerics::Logger> g( CppGenerics::Logger::getInstance() ); \
 			CppGenerics::Logger::getInstance().setLogFile(__VA_ARGS__) ; \
 			CppGenerics::Logger::getInstance().log() << MSG << std::endl ; \
 		}
