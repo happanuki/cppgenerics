@@ -8,8 +8,6 @@
 #include <mutex>
 #include <list>
 
-#include "cppgenerics/interfaces/Observer_I.h"
-
 namespace CppGenerics {
 
 namespace System {

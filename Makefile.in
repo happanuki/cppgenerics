@@ -38,22 +38,17 @@ GTEST_DIR = $(gitGTEST_DIR)/googletest
 GMOCK_DIR = $(gitGTEST_DIR)/googlemock
 GTESTA=$(GTEST_DIR)/make/gtest_main.a
 
-
 ifeq ($(DEBUG),1)
-	CXX_FLAGS = -g -O0 -DDEBUG=1 
+	CXX_FLAGS = -g -O0 -DDEBUG=1
 else
-	CXX_FLAGS = -O2 
+	CXX_FLAGS = -O2
 endif
 
-CXX_FLAGS += -c -std=c++11 -pthread -I$(ROOT_DIR)/include -I$(ROOT_DIR)/include/interfaces
+CXX_FLAGS += -c -std=c++11 -pthread -I$(ROOT_DIR)/include
 CXX_FLAGS_TEST = -isystem $(GTEST_DIR)/include -isystem $(GMOCK_DIR)/include $(CXX_FLAGS) -I$(ROOT_DIR)/include/include.test -I$(GTEST_DIR)/include -I$(GMOCK_DIR)/include
 
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 SRCS_TEST = $(wildcard $(TEST_SRC_DIR)/*.cpp)
-
-HDRS = $(wildcard $(ROOT_DIR)/include/interfaces/*.h)
-HDRS+= $(wildcard $(ROOT_DIR)/include/*.h)
-HDRS_TEST = $(HDRS) $(wildcard $(ROOT_DIR)/include/include.test/*.h) 
 
 _TEST_LIB_P=testlib
 _LIB_P=lib
@@ -72,7 +67,7 @@ OBJS_TEST = $(subst $(TEST_SRC_DIR),$(OBJ_DIR),$(_OBJS_TEST))
 _OBJS_TEST_LIB = $(subst .cpp,_$(_TEST_LIB_P).o,$(SRCS))
 OBJS_TEST_LIB = $(subst $(SRC_DIR),$(OBJ_DIR),$(_OBJS_TEST_LIB))
 
-LD_FLAGS=-Wl,-lpthread 
+LD_FLAGS=-Wl,-lpthread
 LD_FLAGS_TEST=-Wl,-lpthread -L$(OUT_DIR) -l$(TEST_LIB_NAME)
 
 
@@ -88,32 +83,32 @@ all: prepare build test run-test install
 build: prepare link
 
 
-prepare: 
+prepare:
 	mkdir -p $(OUT_DIR) && \
 	mkdir -p $(OBJ_DIR)
 
-prepare-test: 
+prepare-test:
 	[[ ! -d $(gitGTEST_DIR) ]] && { \
 		git clone $(gitGTEST_URL) $(gitGTEST_DIR) && \
 		CXX=$(TEST_CXX) make -C $(GMOCK_DIR)/make &&  \
 		CXX=$(TEST_CXX) make -C $(GTEST_DIR)/make ; \
 	} || { :; }
-	
+
 
 #compile
 $(ROOT_DIR)/$(OBJ_DIR)/%_$(_TEST_P).o: src.test/%.cpp | prepare-test
 	$(TEST_CXX) $(CXX_FLAGS_TEST) $< -o $@
 
-$(ROOT_DIR)/$(OBJ_DIR)/%_$(_LIB_P).o: src/%.cpp | prepare 
+$(ROOT_DIR)/$(OBJ_DIR)/%_$(_LIB_P).o: src/%.cpp | prepare
 	$(CXX) $(CXX_FLAGS) -shared -fPIC $< -o $@
 
-$(ROOT_DIR)/$(OBJ_DIR)/%_$(_TEST_LIB_P).o: src/%.cpp | prepare 
+$(ROOT_DIR)/$(OBJ_DIR)/%_$(_TEST_LIB_P).o: src/%.cpp | prepare
 	$(TEST_CXX) $(CXX_FLAGS) -shared -fPIC $< -o $@
 
 link: $(OBJS)
 	$(CXX) $(OBJS) -o $(OUT_DIR)/$(LIB_FNAME) -shared $(LD_FLAGS)
 
-test: prepare prepare-test link-test-lib link-test 
+test: prepare prepare-test link-test-lib link-test
 
 
 link-test-lib: $(OBJS_TEST_LIB)
@@ -128,7 +123,7 @@ run-test: test
 	LD_LIBRARY_PATH=$(OUT_DIR) $(OUT_DIR)/$(LIB_NAME)-test
 
 
-install: 
+install:
 	mkdir -p $(PREFIX) && \
 	mkdir -p $(PREFIX)/lib/pkgconfig && \
 	mkdir -p $(PREFIX)/include/$(LIB_NAME) && \
@@ -145,4 +140,4 @@ clean:
 distclean: clean
 	rm -rf $(gitGTEST_DIR) && \
 	rm -rf $(AT_FILES)
-	
+
