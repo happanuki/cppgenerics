@@ -15,7 +15,7 @@ public:
 	{
 	public:
 			virtual ~Observer_I() {}
-			virtual void notifyHandler(const T&) = 0;
+			virtual void notifyHandler(T) = 0;
 	};
 
 	class Subject_I

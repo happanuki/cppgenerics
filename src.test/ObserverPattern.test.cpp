@@ -19,7 +19,7 @@ public :
 class TestObserver : public Obs_t
 {
 public:
-	void notifyHandler(const std::string& val) {
+	void notifyHandler(std::string val) {
 		ASSERT_EQ(val, TEST_STRING);
 	}
 };
